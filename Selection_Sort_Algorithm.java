@@ -1,21 +1,23 @@
 import java.util.Scanner;
 
-public class Bubble_Sort_Algorithm {
+public class Selection_Sort_Algorithm {
 
-    int[] bubble_sort(int[] arr, int n) {
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < (n-i-1); ++j){
-                if (arr[j] > arr[j+1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+    int[] selection_sort(int[] arr, int n) {
+        for (int i = 0; i < n; i++) {
+            int min_index = i;
+            for (int j = i+1; j < n; j++) {
+                if(arr[min_index] > arr[j]) {
+                    min_index = j;
                 }
             }
+            int temp = arr[i];
+            arr[i] = arr[min_index];
+            arr[min_index] = temp;
         }
         return arr;
     }
     public static void main(String[] args) {
-        Bubble_Sort_Algorithm bs = new Bubble_Sort_Algorithm();
+        Selection_Sort_Algorithm ss = new Selection_Sort_Algorithm();
         int n;
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter array size : ");
@@ -26,7 +28,7 @@ public class Bubble_Sort_Algorithm {
             arr[i] = sc.nextInt();
         }
 
-        int[] res = bs.bubble_sort(arr, n);
+        int[] res = ss.selection_sort(arr, n);
         for (int i = 0; i < res.length; i++) {
             System.out.print(res[i] + " ");
         }
